@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>My Blog</title>
+  <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+
+  <h1>My Blog</h1>
+
+  <h2>Create a New Post</h2>
+
+  <form action="/create" method="POST">
+    <input type="text" name="title" placeholder="Title" required><br>
+    <input type="text" name="author" placeholder="Author" required><br>
+    <textarea name="content" placeholder="Write your post" required></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>All Posts</h2>
+
+  <% posts.forEach(post => { %>
+
+    <div class="post">
+      <h3><%= post.title %></h3>
+      <p><em>by <%= post.author %> — <%= post.createdAt %></em></p>
+      <p><%= post.content %></p>
+
+      <form action="/edit/<%= post.id %>" method="GET">
+        <button>Edit</button>
+      </form>
+
+      <form action="/delete/<%= post.id %>" method="POST">
+        <button>Delete</button>
+      </form>
+
+    </div>
+  <% }) %>
+
+  <div id="footer">
+
+    <div id="contact">
+      <p>E-mail: <a href="mailto: dsa99@nau.edu">dsa99@nau.edu</p>
+    </div>
+
+    <div id="copyright">
+      <p>&copy; 2025</p>
+    </div>
+
+  </div>
+  
+</body>
+</html>
